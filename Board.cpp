@@ -1,6 +1,8 @@
-// Board.cpp
-#include "Piece.h"
 #include <iostream>
+#include "Board.h"
+#include "Piece.h"
+#include "Turn.h"
+#include "Valid.h"
 
 // Create 8x8 vector of nullptr
 std::vector<std::vector<Piece*>> createBoard()

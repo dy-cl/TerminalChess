@@ -1,3 +1,6 @@
+#ifndef PIECE_H
+#define PIECE_H
+
 #include <string>
 #include <vector>
 
@@ -6,7 +9,7 @@ class Piece
 {
     public:
         std::string symbol;
-        std::vector<int> position;
+        std::string pieceType;
 };
 
 // White pieces
@@ -16,7 +19,7 @@ class whiteKing : public Piece
         whiteKing() 
         {
             symbol = "♚";
-            position = {}; // To be assigned later
+            pieceType = "King";
         }
 };
 
@@ -26,7 +29,7 @@ class whiteQueen : public Piece
         whiteQueen()
         {
             symbol = "♛";
-            position = {}; // To be assigned later
+            pieceType = "Queen";
         }
 };
 
@@ -36,7 +39,7 @@ class whiteKnight : public Piece
         whiteKnight()
         {
             symbol = "♞";
-            position = {}; // To be assigned later
+            pieceType = "Knight";
         }
 };
 
@@ -46,7 +49,7 @@ class whiteBishop : public Piece
         whiteBishop()
         {
             symbol = "♝";
-            position = {}; // To be assigned later
+            pieceType = "Bishop";
         }
 };
 
@@ -56,7 +59,7 @@ class whiteRook : public Piece
         whiteRook()
         {
             symbol = "♜";
-            position = {}; // To be assigned later
+            pieceType = "Rook";
         }
 };
 
@@ -66,7 +69,7 @@ class whitePawn : public Piece
         whitePawn() 
         {
             symbol = "♟";
-            position = {}; // To be assigned later
+            pieceType = "Pawn";
         }
 };
 
@@ -77,7 +80,7 @@ class blackKing : public Piece
         blackKing() 
         {
             symbol = "♔";
-            position = {}; // To be assigned later
+            pieceType = "King";
         }
 };
 
@@ -87,7 +90,7 @@ class blackQueen : public Piece
         blackQueen()
         {
             symbol = "♕";
-            position = {}; // To be assigned later
+            pieceType = "Queen";
         }
 };
 
@@ -97,7 +100,7 @@ class blackKnight : public Piece
         blackKnight()
         {
             symbol = "♘";
-            position = {}; // To be assigned later
+            pieceType = "Knight";
         }
 };
 
@@ -107,7 +110,7 @@ class blackBishop : public Piece
         blackBishop()
         {
             symbol = "♗";
-            position = {}; // To be assigned later
+            pieceType = "Bishop";
         }
 };
 
@@ -117,7 +120,7 @@ class blackRook : public Piece
         blackRook()
         {
             symbol = "♖";
-            position = {}; // To be assigned later
+            pieceType = "Rook";
         }
 };
 
@@ -127,7 +130,9 @@ class blackPawn : public Piece
         blackPawn() 
         {
             symbol = "♙";
-            position = {}; // To be assigned later
+            pieceType = "Pawn";
         }
 };
 
+
+#endif
