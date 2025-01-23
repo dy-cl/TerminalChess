@@ -10,6 +10,7 @@ class Piece
     public:
         std::string symbol;
         std::string pieceType;
+        int numMoves; // Only relevant for pawn
 };
 
 // White pieces
@@ -70,6 +71,7 @@ class whitePawn : public Piece
         {
             symbol = "♟";
             pieceType = "Pawn";
+            numMoves = 0;
         }
 };
 

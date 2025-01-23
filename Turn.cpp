@@ -38,27 +38,27 @@ std::vector<int> convertInputToArrayCoord(std::string input)
 
 void takeTurn(std::vector<std::vector<Piece*>>& board)
 {
-    std::vector<int> selectedPieceArrayPosition = {-1, -1}; // Initialise as invalid position
-    std::vector<int> selectedMoveArrayPosition = {-1, -1};
+    std::vector<int> startPos = {-1, -1}; // Initialise as invalid position
+    std::vector<int> endPos = {-1, -1};
     
     // Ensures selected piece is valid as convertInputToArrayCoord will return {-1, -1} for invalid positions
-    while (selectedPieceArrayPosition[0] == -1 && selectedPieceArrayPosition[1] == -1)
+    while (startPos[0] == -1 && startPos[1] == -1)
     {
         std::string input;
         std::cout << "Select piece to move: ";
         std::cin >> input;
-        selectedPieceArrayPosition = convertInputToArrayCoord(input);
+        startPos = convertInputToArrayCoord(input);
     }
 
-    while (selectedMoveArrayPosition[0] == -1 && selectedMoveArrayPosition[1] == -1)
+    while (endPos[0] == -1 && endPos[1] == -1)
     {
         std::string input;
         std::cout << "Select where to move: ";
         std::cin >> input;
-        selectedMoveArrayPosition = convertInputToArrayCoord(input);
+        endPos = convertInputToArrayCoord(input);
     }
 
-    bool move = isMoveValid(board, selectedPieceArrayPosition, selectedMoveArrayPosition);
+    bool move = isMoveValid(board, startPos, endPos);
     
     // If move is invalid restart the function to prompt new move input
     if (move == false)
@@ -69,8 +69,8 @@ void takeTurn(std::vector<std::vector<Piece*>>& board)
     else if (move == true)
     {
         // Move piece
-        board[selectedMoveArrayPosition[0]][selectedMoveArrayPosition[1]] = std::move(board[selectedPieceArrayPosition[0]][selectedPieceArrayPosition[1]]);
-        board[selectedPieceArrayPosition[0]][selectedPieceArrayPosition[1]] = nullptr;
+        board[endPos[0]][endPos[1]] = std::move(board[startPos[0]][startPos[1]]);
+        board[startPos[0]][startPos[1]] = nullptr;
     }
 }
 
