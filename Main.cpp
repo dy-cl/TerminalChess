@@ -1,16 +1,17 @@
 #include "Piece.h"
 #include <vector>
 #include <string>
-#include <memory>
 #include <iostream>
+#include <map>
 
 // Create 8x8 vector of nullptr to create drawBoard
 std::vector<std::vector<Piece*>> board(8, std::vector<Piece*>(8, nullptr));
 
+// Places all pieces on the board
 void initialisePositions()
 {
     
-    // Allocate heap memory for Pawn objects and return pointer to them on board matrix
+    // Allocate heap memory for Piece objects and return pointer to them on board matrix
 
     // Place Pawns
     for (int col = 0; col < 8; col++)
@@ -45,6 +46,7 @@ void initialisePositions()
 
 }   
 
+// Draws board with square colours and piece positions
 void drawBoard()
 {
     // Draw board
@@ -69,17 +71,47 @@ void drawBoard()
         }
         std::cout << std::endl;
     }
+}
+
+// Connverts user input from chess notation coordinates to array elements
+std::vector<int> convertInputToArrayCoord(std::string coordinate)
+{
+    if (coordinate.size() != 2)
+    {
+        std::cout << "Invalid coordinate format." << std::endl;
+        return {-1, -1}; // Return error coordinate
+    }
+
+
+
+    return {0, 0};
+}
+
+void takeTurn()
+{
+    std::vector<int> selectedPieceArrayPosition = {-1, -1}; // Initialise as invalid position
+    
+    // Ensures selected piece is valid as convertInputToArrayCoord will return {-1, -1} for invalid positions
+    while (selectedPieceArrayPosition[0] == -1 && selectedPieceArrayPosition[1] == -1)
+    {
+        std::string input;
+        std::cout << "Select piece to move: ";
+        std::cin >> input;
+        selectedPieceArrayPosition = convertInputToArrayCoord(input);
+    }
 
 }
 
+
+
+
+
+
 int main()
 {  
-
-    
-
-
-
     initialisePositions();
     drawBoard();
+    takeTurn();
+    
     return 0;
 }
