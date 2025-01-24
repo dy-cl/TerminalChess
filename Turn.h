@@ -12,7 +12,7 @@ std::vector<int> convertInputToArrayCoord(std::string input);
 bool isMoveValid(std::vector<std::vector<Piece*>>& board);
 
 // Handles turn taking logic
-void takeTurn(std::vector<std::vector<Piece*>>& board);
+void takeTurn(std::vector<std::vector<Piece*>>& board, std::string whosTurn);
 
 #endif
 

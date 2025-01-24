@@ -9,6 +9,10 @@ std::vector<std::vector<Piece*>> board;
 
 int main()
 {   
+    // Variables to keep track of whos turn it is
+    int turn = 0; 
+    std::string whosTurn;
+
     board = createBoard();
     initialisePositions(board);
 
@@ -16,8 +20,20 @@ int main()
     bool checkmate = false;
     while (checkmate == false)
     {
-        drawBoard(board);
-        takeTurn(board);
+        if (turn % 2 == 0)
+        {
+            whosTurn = "White";
+            drawBoard(board);
+            takeTurn(board, whosTurn);
+            turn++;
+        }
+        else
+        {
+            whosTurn = "Black";
+            drawBoard(board);
+            takeTurn(board, whosTurn);
+            turn++;
+        }
     } 
     return 0;
 }

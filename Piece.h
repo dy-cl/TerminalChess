@@ -10,6 +10,7 @@ class Piece
     public:
         std::string symbol;
         std::string pieceType;
+        std::string colour;
         int numMoves; // Only relevant for pawn
 };
 
@@ -21,6 +22,7 @@ class whiteKing : public Piece
         {
             symbol = "♚";
             pieceType = "King";
+            colour = "White";
         }
 };
 
@@ -31,6 +33,7 @@ class whiteQueen : public Piece
         {
             symbol = "♛";
             pieceType = "Queen";
+            colour = "White";
         }
 };
 
@@ -41,6 +44,7 @@ class whiteKnight : public Piece
         {
             symbol = "♞";
             pieceType = "Knight";
+            colour = "White";
         }
 };
 
@@ -51,6 +55,7 @@ class whiteBishop : public Piece
         {
             symbol = "♝";
             pieceType = "Bishop";
+            colour = "White";
         }
 };
 
@@ -61,6 +66,7 @@ class whiteRook : public Piece
         {
             symbol = "♜";
             pieceType = "Rook";
+            colour = "White";
         }
 };
 
@@ -72,6 +78,7 @@ class whitePawn : public Piece
             symbol = "♟";
             pieceType = "Pawn";
             numMoves = 0;
+            colour = "White";
         }
 };
 
@@ -83,6 +90,7 @@ class blackKing : public Piece
         {
             symbol = "♔";
             pieceType = "King";
+            colour = "Black";
         }
 };
 
@@ -93,6 +101,7 @@ class blackQueen : public Piece
         {
             symbol = "♕";
             pieceType = "Queen";
+            colour = "Black";
         }
 };
 
@@ -103,6 +112,7 @@ class blackKnight : public Piece
         {
             symbol = "♘";
             pieceType = "Knight";
+            colour = "Black";
         }
 };
 
@@ -113,6 +123,7 @@ class blackBishop : public Piece
         {
             symbol = "♗";
             pieceType = "Bishop";
+            colour = "Black";
         }
 };
 
@@ -123,6 +134,7 @@ class blackRook : public Piece
         {
             symbol = "♖";
             pieceType = "Rook";
+            colour = "Black";
         }
 };
 
@@ -133,6 +145,7 @@ class blackPawn : public Piece
         {
             symbol = "♙";
             pieceType = "Pawn";
+            colour = "Black";
         }
 };
 

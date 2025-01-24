@@ -36,7 +36,7 @@ std::vector<int> convertInputToArrayCoord(std::string input)
 
 
 
-void takeTurn(std::vector<std::vector<Piece*>>& board)
+void takeTurn(std::vector<std::vector<Piece*>>& board, std::string whosTurn)
 {
     std::vector<int> startPos = {-1, -1}; // Initialise as invalid position
     std::vector<int> endPos = {-1, -1};
@@ -58,13 +58,12 @@ void takeTurn(std::vector<std::vector<Piece*>>& board)
         endPos = convertInputToArrayCoord(input);
     }
 
-    bool move = isMoveValid(board, startPos, endPos);
-    
+    bool move = isMoveValid(board, startPos, endPos, whosTurn); 
     // If move is invalid restart the function to prompt new move input
     if (move == false)
     {
         std::cout << "Invalid move." << std::endl;
-        takeTurn(board);
+        takeTurn(board, whosTurn);
     }
     else if (move == true)
     {
