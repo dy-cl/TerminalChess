@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -O3
 TARGET = TerminalChess
-SRC = Board.cpp Main.cpp Turn.cpp Valid.cpp
-HEADERS = Board.h Main.h Turn.h Valid.h
+SRC = Board.cpp Game.cpp Main.cpp Piece.cpp
+HEADERS = Board.h Game.h Piece.h
 OBJ = $(SRC:.cpp=.o)
 
 all: $(TARGET)

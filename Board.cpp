@@ -1,65 +1,72 @@
 #include <iostream>
 #include "Board.h"
 #include "Piece.h"
-#include "Turn.h"
-#include "Valid.h"
 
-// Create 8x8 vector of nullptr
-std::vector<std::vector<Piece*>> createBoard()
+// Constructor
+Board::Board() 
+{   
+    // Initialise 8 x 8 grid of nullptr of type Piece
+    board = std::vector<std::vector<Piece*>>(8, std::vector<Piece*>(8, nullptr));
+}
+
+// Destructor deletes pieces when board object goes out of scope
+Board::~Board()
 {
-    return std::vector<std::vector<Piece*>>(8, std::vector<Piece*>(8, nullptr));
+    for (auto& row : board)
+    {
+        for (auto& piece : row)
+        {   
+            delete piece;
+        }
+    }
 }
 
 // Places all pieces on the board
-void initialisePositions(std::vector<std::vector<Piece*>>& board)
+void Board::initialisePositions()
 {
     
-    // Allocate heap memory for Piece objects and return pointer to them on board matrix
-
     // Place Pawns
     for (int col = 0; col < 8; col++)
     {
-        board[1][col] = new blackPawn();
-        board[6][col] = new whitePawn();
+        board[1][col] = new Pawn("Black");
+        board[6][col] = new Pawn("White");
     }
 
     // Place Rooks
-    board[0][0] = new blackRook();
-    board[0][7] = new blackRook();
-    board[7][0] = new whiteRook();
-    board[7][7] = new whiteRook();  
+    board[0][0] = new Rook("Black");
+    board[0][7] = new Rook("Black");
+    board[7][0] = new Rook("White");
+    board[7][7] = new Rook("White");  
 
     // Place Knights
-    board[0][1] = new blackKnight(); 
-    board[0][6] = new blackKnight();
-    board[7][1] = new whiteKnight();
-    board[7][6] = new whiteKnight();
+    board[0][1] = new Knight("Black"); 
+    board[0][6] = new Knight("Black");
+    board[7][1] = new Knight("White");
+    board[7][6] = new Knight("White");
 
     // Place Bishops
-    board[0][2] = new blackBishop();
-    board[0][5] = new blackBishop();
-    board[7][2] = new whiteBishop();
-    board[7][5] = new whiteBishop();
+    board[0][2] = new Bishop("Black");
+    board[0][5] = new Bishop("Black");
+    board[7][2] = new Bishop("White");
+    board[7][5] = new Bishop("White");
 
     // Place Kings and Queens
-    board[0][3] = new blackQueen();
-    board[7][3] = new whiteQueen();
-    board[0][4] = new blackKing();
-    board[7][4] = new whiteKing();
-
+    board[0][3] = new Queen("Black");
+    board[7][3] = new Queen("White");
+    board[0][4] = new King("Black");
+    board[7][4] = new King("White");
 }   
 
 // Draws board with square colours and piece positions
-void drawBoard(const std::vector<std::vector<Piece*>>& board)
+void Board::drawBoard() const
 {
-    // Draw board
     for (int row = 0; row < 8; row++)
     {
         for (int col = 0; col < 8; col++)
         {
             if (board[row][col] != nullptr)
             {
-                std::cout << board[row][col]->symbol << " ";
+                std::cout << board[row][col]->getSymbol() << " ";
             }
 
             else if (board[row][col] == nullptr && (row + col) % 2 == 0)
@@ -75,5 +82,18 @@ void drawBoard(const std::vector<std::vector<Piece*>>& board)
 
         std::cout << std::endl;
     }
+}
+
+// Return a pointer to the piece at the given position which is nullptr if the square is empty
+Piece* Board::getPiece(int row, int col) const 
+{
+    return board[row][col];
+}
+
+// Set end position to point to start position piece, set start position to be nullptr
+void Board::movePiece(int startRow, int startCol, int endRow, int endCol) 
+{
+    board[endRow][endCol] = board[startRow][startCol];
+    board[startRow][startCol] = nullptr;
 }
 
